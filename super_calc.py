@@ -161,3 +161,56 @@ while not quit:
                     break
                 case 'Quit':
                     exit(0)
+
+
+
+
+    # Binary Calc
+
+    if choice == 4:
+        print('Welcome to the Binary-Calc option. Here you can do calculations with Binary Numbers!\n')  
+        while True:
+            binary_1 = input('Please type a valid Binary Number\n')
+            try:
+                binary_1_int = int(binary_1)
+                binary_number_1 = binary_to_int(binary_1_int)
+            except:
+                print('ERROR --- Invalid Binary Number --- ERROR')
+                continue
+            
+            binary_2 = input('Please type a valid Binary Number\n')
+            try:
+                binary_2_int = int(binary_2)
+                binary_number_2 = binary_to_int(binary_2_int)
+            except:
+                print('ERROR --- Invalid Binary Number --- ERROR')
+                continue
+
+            operator_list = ['+', '-', "/", "*"]
+
+            operator_choice = input("""Please select an operator: \n
+            '+' for addition \n
+            '-' for subtraction \n
+            '*' for multiplication \n
+            '/' for division \n""")
+            if operator_choice not in operator_list:
+                print('ERROR --- Operator is invalid --- ERROR')
+                continue
+
+            match operator_choice:
+                case '+':
+                    answer = add(binary_number_1, binary_number_2)
+                case '-':
+                    answer = subtract(binary_number_1, binary_number_2)
+                case '*': 
+                    answer = multiply(binary_number_1, binary_number_2)
+                case '/':
+                    answer = divide(binary_number_1, binary_number_2) 
+            print(f"""Your answer is:\n
+                        {binary_1}   {operator_choice}   {binary_2}   =    {int_to_binary(answer)}\n""")
+            
+            user_choice = input("""You can continue using Binary Calculator, Go Back to Menu, or Fully Quit\n
+            Enter: to continue using Roman Calculator\n
+            1: to go back to menu\n
+            'Quit': to fully quit\n""")
+            
