@@ -1,15 +1,15 @@
     
 
-def int_to_binary(integer: int) -> int:
+def int_to_binary(integer: int) -> str:
     if integer == 0:
-        return 0
+        return '0'
     binary_str = ''
-
+    integer = int(integer)
     while integer > 0:
         remainder = integer % 2
         binary_str = str(remainder) + binary_str
         integer //= 2
-    return int(binary_str)
+    return binary_str
 
 def binary_to_int(binary: int) -> int:
     length = len(str(binary))

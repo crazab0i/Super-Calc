@@ -12,6 +12,8 @@ def roman_to_int(roman_string: str) -> int:
     return count
 
 def int_to_roman(number: int) -> str:
+    if int == 0:
+        return 0
     roman_int_map = {1: 'I', 4: 'IV', 5: 'V', 9: 'IX', 10: 'X', 40: 'XL', 50: 'L', 90: 'XC', 100: 'C', 400: 'CD', 500: 'D', 900: 'CM', 1000: 'M'}
     roman_arr = list(roman_int_map.keys())[::-1]
     return_str = ''
