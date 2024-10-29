@@ -24,29 +24,37 @@ print("""There are multiple options for your calculating needs:\n
 quit = False
 current_choice = None
 while not quit:
-    choice = int(input("Please select a number option (1-4)  "))
+    choice = int(input("Please select a number option (1-4)\n"))
     if choice not in [1, 2, 3, 4]:
         print("Invalid choice, please try again")
+    
+    
+
+
+    # Super Calc
+    
     
     if choice == 1:
         print('Welcome to the Super-Calc option. Here you can do combination number programming!    ')
 
         # finish logic
 
+    
+    
+    
+    # Normal Calculator
+    
     if choice == 2:
-        current_choice = 2
-        print('Welcome to the Normal-Calc option. Here you can do normal calculations!  ')
-        print('')
-        while current_choice == 2:
-
-            num_1_str = input("Please select an integer number  ")
+        print('Welcome to the Normal-Calc option. Here you can do normal calculations!\n')
+        while True:
+            num_1_str = input("Please select an integer number\n")
             try:
                 num_1 = int(num_1_str)
             except:
                 print('ERROR --- Type a valid int!!! --- ERROR  ')
                 continue
             
-            num_2_str = input("Please select an integer number  ")
+            num_2_str = input("Please select an integer number\n")
             try: 
                 num_2 = int(num_2_str)
             except:
@@ -72,7 +80,8 @@ while not quit:
                     answer = multiply(num_1, num_2)
                 case '/':
                     answer = divide(num_1, num_2) 
-            print(f'Your answer is: {answer}')
+            print(f"""Your answer is:\n
+                        {num_1_str}   {operator_choice}   {num_2_str}   =   {answer}\n""")
             user_choice = input("""You can continue using Normal Calculator, Go Back to Menu, or Fully Quit\n
             Enter: to continue using Normal Calculator\n
             1: to go back to menu\n
@@ -86,8 +95,69 @@ while not quit:
                     Super-Calc: 1 \n
                     Normal-Calc: 2 \n
                     Roman-Calc 3 \n
-                    Binary-Cal 4""")
+                    Binary-Cal 4\n""")
                     break
                 case 'Quit':
                     exit(0)
+    
+
+
+
+    # Roman Calc
+
+    if choice == 3:
+        print('Welcome to the Roman-Calc option. Here you can do calculations with Roman Numerals!\n')
+        while True:
+            roman_1_str = input('Please type a valid Roman Numeral\n')
+            try: 
+                roman_int = roman_to_int(roman_1_str)
+            except:
+                print('ERROR --- Invalid Roman Numeral --- ERROR')
+                continue
+            roman_2_str = input('Please type a valid Roman Numeral\n')
+            try:
+                roman_int_2 = roman_to_int(roman_2_str)
+            except:
+                print('ERROR --- Invalid Roman Numeral --- ERROR')
+                continue
             
+            operator_list = ['+', '-', "/", "*"]
+
+            operator_choice = input("""Please select an operator: \n
+            '+' for addition \n
+            '-' for subtraction \n
+            '*' for multiplication \n
+            '/' for division \n""")
+            if operator_choice not in operator_list:
+                print('ERROR --- Operator is invalid --- ERROR')
+                continue
+
+            match operator_choice:
+                case '+':
+                    answer = add(roman_int, roman_int_2)
+                case '-':
+                    answer = subtract(roman_int, roman_int_2)
+                case '*': 
+                    answer = multiply(roman_int, roman_int_2)
+                case '/':
+                    answer = divide(roman_int, roman_int_2) 
+            print(f"""Your answer is:\n
+                        {roman_1_str}   {operator_choice}   {roman_2_str}   =    {int_to_roman(answer)}\n""")
+            
+            user_choice = input("""You can continue using Roman Calculator, Go Back to Menu, or Fully Quit\n
+            Enter: to continue using Roman Calculator\n
+            1: to go back to menu\n
+            'Quit': to fully quit\n""")
+
+            match user_choice:
+                case '':
+                    continue
+                case '1':
+                    print("""There are multiple options for your calculating needs:\n
+                    Super-Calc: 1 \n
+                    Normal-Calc: 2 \n
+                    Roman-Calc 3 \n
+                    Binary-Cal 4\n""")
+                    break
+                case 'Quit':
+                    exit(0)
